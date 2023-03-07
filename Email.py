@@ -29,7 +29,7 @@ def send(body):
     sender = EMAIL_ADDRESS  # 发件邮箱
     receiver = [ '1136623363@qq.com']#,'cb1136623363@gmail.com', '2020281102@email.szu.edu.cn']
     # 收件邮箱
-    body = NameCheck.namecheck(body)
+    body = NameCheck.namecheck(str(body))
     subject = f"{str(datetime.datetime.now())} 上传成功"
     # 这里我调用了自己的接口，如果不需要直接将body改为 body = '正文'
     #body = TextBody(download,filename,upload)#requests.get(xg_url).text
