@@ -10,7 +10,8 @@ def upload(path, pathname, filename):
             'file': (filename, open(path + '/' + filename, 'rb'))
         }
     )
-    file = quote(pathname + '/' + filename, 'utf-8')
+    new_filename = NameCheck.namecheck(filename)
+    file = quote(pathname + '/' + new_filename, 'utf-8')
     # print(file)
     headers = {
         'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IjExMzY2MjMzNjMiLCJleHAiOjE2NzgyODQ0NzQsIm5iZiI6MTY3ODExMTY3NCwiaWF0IjoxNjc4MTExNjc0fQ.IaaDSu-fIUG7RQNUDs_HH6K7VmUu0Lot5Z8OCYMNong',
@@ -30,7 +31,6 @@ def main(path, pathname):
     filename_list_to_upload = [i for i in filename_list if i[-3:] == 'mp4']
 
     for i in filename_list_to_upload:
-        i = NameCheck.namecheck(i)
         flag = upload(path, pathname, i)
         if flag == 200:
             os.remove(path + '/' + i)
