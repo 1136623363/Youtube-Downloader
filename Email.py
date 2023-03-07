@@ -14,7 +14,7 @@ import schedule
 import time
 from threading import Timer
 import datetime
-
+import NameCheck
 
 
 def send(body):
@@ -45,6 +45,7 @@ def send(body):
 
 def TextBody(download,filename,upload):
     Body = ''
+    filename = NameCheck.namecheck(str(filename))
     if download == 1 :
         if upload == 200 :
             Body = f'{filename} 上传成功'
