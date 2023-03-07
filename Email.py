@@ -44,6 +44,7 @@ def send(body):
         smtp.send_message(msg)
 
 def TextBody(download,filename,upload):
+    Body = ''
     if download == 1 :
         if upload == 200 :
             Body = f'{filename} 上传成功'

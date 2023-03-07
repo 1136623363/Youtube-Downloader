@@ -8,6 +8,7 @@ class Youtube_Downloader():
         self.channel_name = channel_name#"@wangzhian"
         self.path = path
         self.flag = 0   #0原始状态，1下载成功，2没有更新，-1下载失败
+        self.filename = ['']
 
     def getId(self):
         # 运行 yt-dlp 命令获取最新视频列表
@@ -19,7 +20,7 @@ class Youtube_Downloader():
         for line in output.decode().strip().split("\n"):
             video = json.loads(line)
             self.videos.append(video)
-
+        print(self.videos)
         # print(videos)
         # with open('videos.json', 'w') as f:
         #     json.dump(self.videos, f)
@@ -34,6 +35,7 @@ class Youtube_Downloader():
             command = f'yt-dlp -o "{self.path}/%(title)s.%(ext)s" -f best {video_url}'
             subprocess.run(command, shell=True)
             self.filename = [j['filename'][:-3] for j in self.videos if i == j['id']]
+
 
     def main(self):
         json_name = self.channel_name+'-Playlist.json'
