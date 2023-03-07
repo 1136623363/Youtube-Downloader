@@ -20,7 +20,7 @@ class Youtube_Downloader():
         for line in output.decode().strip().split("\n"):
             video = json.loads(line)
             self.videos.append(video)
-        print(self.videos)
+        # print(self.videos)
         # print(videos)
         # with open('videos.json', 'w') as f:
         #     json.dump(self.videos, f)
@@ -39,7 +39,7 @@ class Youtube_Downloader():
 
     def main(self):
         json_name = self.channel_name+'-Playlist.json'
-        if os.path.exists(json_name) == True:       #判断video_id_former是否存在
+        if os.path.exists(self.path+'/'+json_name) == True:       #判断video_id_former是否存在
             with open(self.path+'/'+json_name, 'r') as fr:
                 video_id_former = json.load(fr)
             # print(video_id_former)
