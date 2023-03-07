@@ -2,7 +2,7 @@ import requests
 import os
 from urllib.parse import quote
 from requests_toolbelt import MultipartEncoder
-
+import NameCheck
 
 def upload(path, pathname, filename):
     m = MultipartEncoder(
@@ -30,6 +30,7 @@ def main(path, pathname):
     filename_list_to_upload = [i for i in filename_list if i[-3:] == 'mp4']
 
     for i in filename_list_to_upload:
+        i = NameCheck.namecheck(i)
         flag = upload(path, pathname, i)
         if flag == 200:
             os.remove(path + '/' + i)
