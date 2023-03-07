@@ -22,7 +22,7 @@ def upload(path, pathname, filename):
 
     res = requests.put(url="http://192.168.31.183:5244/api/fs/form", data=m, headers=headers)
     print(res.text)
-
+    print(f"res.status_code : {res.status_code}")
     return res.status_code
 
 
