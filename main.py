@@ -17,5 +17,6 @@ for i in list_:
     download,filename = Downloader.Youtube_Downloader(channel_name,path).run()
     upload = Uploader.main(path,pathname)
     text_.append(Email.TextBody(download,filename,upload))
+    print(text_)
 
 Email.send(text_)
